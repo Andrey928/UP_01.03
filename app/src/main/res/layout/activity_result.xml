@@ -46,11 +46,12 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="40dp"
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold"
         tools:text="Пользователь">
+
     </TextView>
 
     <TextView
@@ -58,10 +59,11 @@
         android:layout_width="215dp"
         android:layout_height="40dp"
         android:layout_marginTop="50dp"
-        android:textColor="#0312FD"
+        android:textColor="#00FF09"
         android:textSize="20sp"
         android:gravity="center_horizontal"
-        tools:text="Ваш счет 9 из 10">
+        tools:text="Ваш счет 9 из 10"
+        android:textStyle="bold">
 
     </TextView>
 
