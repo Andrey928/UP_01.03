@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:padding="20dp"
+    android:layout_height="match_parent"
+    tools:context=".ResultActivity">
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Результат"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <ImageView
+        android:id="@+id/iv_trophy"
+        android:layout_width="251dp"
+        android:layout_height="258dp"
+        android:src="@drawable/ic_trophy">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tv_congratulations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Поздравляю!"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold">
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        tools:text="Пользователь">
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="215dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:textColor="#0312FD"
+        android:textSize="20sp"
+        android:gravity="center_horizontal"
+        tools:text="Ваш счет 9 из 10">
+
+    </TextView>
+
+    <Button
+        android:onClick="btn_finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:background="@color/white"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Начать заново"
+        >
+    </Button>
+
+
+</LinearLayout>
