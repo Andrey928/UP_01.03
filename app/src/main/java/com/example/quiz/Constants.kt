@@ -11,9 +11,9 @@ object Constants {
         //1
         val que1 = Question(
             1, "Какой стране принадлежит этот флаг?",
-            R.drawable.ic_flag_of_argentina,
-            "Аргентина", "Австралия",
-            "Армения", "Австрия", 1
+            R.drawable.ic_flag_of_armenia,
+            "Эстония", "Колумбия",
+            "Армения", "Люксмембург", 3
         )
         questionsList.add(que1)
 
@@ -22,7 +22,7 @@ object Constants {
             2, "Какой стране принадлежит этот флаг?",
             R.drawable.ic_flag_of_australia,
             "Ангола", "Австрия",
-            "Австралия", "Азербайджан", 3
+            "Австралия", "Англия", 3
         )
 
         questionsList.add(que2)
@@ -30,9 +30,9 @@ object Constants {
         // 3
         val que3 = Question(
             3, "Какой стране принадлежит этот флаг?",
-            R.drawable.ic_flag_of_brazil,
-            "Беларусь", "Белиз",
-            "Бруней", "Бразилия", 4
+            R.drawable.flag_of_canada,
+            "Словения", "Белиз",
+            "Монако", "Канада", 4
         )
 
         questionsList.add(que3)
@@ -50,9 +50,9 @@ object Constants {
         // 5
         val que5 = Question(
             5, "Какой стране принадлежит этот флаг?",
-            R.drawable.ic_flag_of_fiji,
-            "Габон", "Франция",
-            "Фиджи", "Финлядия", 3
+            R.drawable.flag_of_uzbekistan,
+            "Алжир", "Турция",
+            "Узбекистан", "Казахстан", 3
         )
 
         questionsList.add(que5)
@@ -80,9 +80,9 @@ object Constants {
         // 8
         val que8 = Question(
             8, "Какой стране принадлежит этот флаг?",
-            R.drawable.ic_flag_of_india,
-            "Иран", "Италия",
-            "Мексика", "Индия", 4
+            R.drawable.flag_of_the_of_china,
+            "Тайвань", "Вьетнам",
+            "Кыргызстан", "Китай", 4
         )
 
         questionsList.add(que8)
@@ -90,9 +90,9 @@ object Constants {
         // 9
         val que9 = Question(
             9, "Какой стране принадлежит этот флаг?",
-            R.drawable.ic_flag_of_new_zealand,
-            "Самоа", "Новая Зеландия",
-            "Тувалу", "Ни один из них", 2
+            R.drawable.flag_of_syria,
+            "Ирак", "Сирия",
+            "ОАЭ", "Йемен", 2
         )
 
         questionsList.add(que9)

@@ -56,14 +56,14 @@
 
     <TextView
         android:id="@+id/tv_score"
-        android:layout_width="215dp"
-        android:layout_height="40dp"
+        android:layout_width="229dp"
+        android:layout_height="38dp"
         android:layout_marginTop="50dp"
-        android:textColor="#00FF09"
-        android:textSize="20sp"
         android:gravity="center_horizontal"
-        tools:text="Ваш счет 9 из 10"
-        android:textStyle="bold">
+        android:textColor="#00FF09"
+        android:textSize="25sp"
+        android:textStyle="italic"
+        tools:text="Ваш счет 9 из 10">
 
     </TextView>
 
@@ -72,7 +72,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:background="@color/white"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
