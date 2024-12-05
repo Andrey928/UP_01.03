@@ -103,6 +103,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var mSelectedOptionPosition :Int = 0
     private var mCorrectAnswers:Int = 0
     private var mUserName: String? = null
+    private var isAnswerConfirmed = false
 
     override fun onClick(v: View?) {
         val btn_submit = findViewById<Button>(R.id.btn_submit)
@@ -110,57 +111,79 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         val tv_option_two = findViewById<TextView>(R.id.tv_option_two)
         val tv_option_three = findViewById<TextView>(R.id.tv_option_three)
         val tv_option_four = findViewById<TextView>(R.id.tv_option_four)
-        when(v?.id){
-        R.id.tv_option_one ->{
-            selectedOptionView(tv_option_one, 1)
-        }
-        R.id.tv_option_two -> {
-            selectedOptionView(tv_option_two,2)
 
-        }
+        when (v?.id) {
+            R.id.tv_option_one -> {
+                if (!isAnswerConfirmed) {
+                    selectedOptionView(tv_option_one, 1)
+
+                }
+            }
+            R.id.tv_option_two -> {
+                if (!isAnswerConfirmed) {
+                    selectedOptionView(tv_option_two, 2)
+
+                }
+            }
             R.id.tv_option_three -> {
-                selectedOptionView(tv_option_three, 3)
+                if (!isAnswerConfirmed) {
+                    selectedOptionView(tv_option_three, 3)
 
+                }
             }
             R.id.tv_option_four -> {
-                selectedOptionView(tv_option_four, 4)
+                if (!isAnswerConfirmed) {
+                    selectedOptionView(tv_option_four, 4)
+
+                }
             }
             R.id.btn_submit -> {
-                if(mSelectedOptionPosition == 0){
-                    mCurrentPosition++
+                if (mSelectedOptionPosition == 0) {
 
-                    when{
-                        mCurrentPosition <= mQuestionsList!!.size -> {
-                            setQuestion()
-                        }else ->{
-                            val intent = Intent(this, ResultActivity::class.java)
-                            intent.putExtra(Constants.USER_NAME, mUserName)
-                            intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
-                            intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
-                        startActivity(intent)
-                        finish()
-                        }
-                    }
-                }else{
+                    return
+                }
+
+                if (!isAnswerConfirmed) {
+
                     val question = mQuestionsList?.get(mCurrentPosition - 1)
 
-                    if (question!!.correctAnswer!=mSelectedOptionPosition){
+                    if (question!!.correctAnswer != mSelectedOptionPosition) {
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
-                    }else{
+                    } else {
                         mCorrectAnswers++
                     }
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
 
-                    if (mCurrentPosition == mQuestionsList!!.size){
+
+                    isAnswerConfirmed = true
+
+
+                    if (mCurrentPosition == mQuestionsList!!.size) {
                         btn_submit.text = "Завершить"
-                    }else{
+                    } else {
                         btn_submit.text = "Следующий вопрос"
                     }
-                    mSelectedOptionPosition = 0
+                } else {
+
+                    mCurrentPosition++
+
+                    if (mCurrentPosition <= mQuestionsList!!.size) {
+                        setQuestion()
+
+                        isAnswerConfirmed = false
+                        mSelectedOptionPosition = 0
+                    } else {
+
+                        val intent = Intent(this, ResultActivity::class.java)
+                        intent.putExtra(Constants.USER_NAME, mUserName)
+                        intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                        intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                        startActivity(intent)
+                        finish()
+                    }
                 }
             }
-
-    }
+        }
     }
     private fun answerView(answer:Int, drawableView: Int) {
         val tv_option_one = findViewById<TextView>(R.id.tv_option_one)
