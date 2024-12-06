@@ -68,17 +68,16 @@
     </TextView>
 
     <Button
-        android:onClick="btn_finish"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:minHeight="48dp"
+        android:onClick="btn_finish"
+        android:text="Начать заново"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:text="Начать заново"
-        >
-    </Button>
+        android:textStyle="bold"></Button>
 
 
 </LinearLayout>

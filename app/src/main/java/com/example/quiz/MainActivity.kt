@@ -38,4 +38,16 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    fun click_info(view: View) {
+        val intent = Intent(this, activity_info::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun click_about(view: View) {
+        val intent = Intent(this, about_activity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }
