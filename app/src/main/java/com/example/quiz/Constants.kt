@@ -106,7 +106,53 @@ object Constants {
         )
 
         questionsList.add(que10)
+        //11
+        val que11 = Question(
+            11, "Какой стране принадлежит этот флаг?",
+            R.drawable.ic_flag_of_fiji,
+            "Самоа", "Тувалу",
+            "Фиджи", "Вануату", 3
+        )
 
-        return questionsList
+        questionsList.add(que11)
+
+        val que12 = Question(
+            12, "Какой стране принадлежит этот флаг?",
+            R.drawable.ic_flag_of_argentina,
+            "Аргентина", "Парагвай",
+            "Уругвай", "Перу", 1
+        )
+
+        questionsList.add(que12)
+
+        val que13 = Question(
+            13, "Какой стране принадлежит этот флаг?",
+            R.drawable.ic_flag_of_brazil,
+            "Венесуэла", "Бразилия",
+            "Италия", "Эфиопия", 2
+        )
+
+        questionsList.add(que13)
+
+
+        val que14 = Question(
+            14, "Какой стране принадлежит этот флаг?",
+            R.drawable.ic_flag_of_new_zealand,
+            "Великобритания", "Австралия",
+            "Тонга", "Новая Зеландия", 4
+        )
+
+        questionsList.add(que14)
+
+        val que15 = Question(
+            15, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_iraq,
+            "Чехия", "Ирак",
+            "Судан", "Египет", 2
+        )
+
+        questionsList.add(que15)
+
+        return questionsList.shuffled() as ArrayList<Question>
     }
 }
