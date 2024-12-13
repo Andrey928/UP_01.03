@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Im
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -35,7 +36,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         val tv_option_four = findViewById<TextView>(R.id.tv_option_four)
         val btn_submit = findViewById<Button>(R.id.btn_submit)
 
-        mUserName=intent.getStringExtra(Constants.USER_NAME)
+        mUserName = intent.getStringExtra(Constants.USER_NAME)
 
         mQuestionsList = Constants.getQuestions()
 
@@ -48,7 +49,6 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         btn_submit.setOnClickListener(this)
 
 
-        
     }
 
     private fun setQuestion() {
@@ -62,13 +62,13 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         val tv_progress = findViewById<TextView>(R.id.tv_progress)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
 
-        val question = mQuestionsList!![mCurrentPosition-1]
+        val question = mQuestionsList!![mCurrentPosition - 1]
 
         defaultOptionsView()
 
-        if (mCurrentPosition == mQuestionsList!!.size){
+        if (mCurrentPosition == mQuestionsList!!.size) {
             btn_submit.text = "Завершить"
-        }else{
+        } else {
             btn_submit.text = "Подтвердить"
         }
 
@@ -82,7 +82,8 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         tv_option_three.text = question.optionThree
         tv_option_four.text = question.optionFour
     }
-    private fun defaultOptionsView(){
+
+    private fun defaultOptionsView() {
         val options = ArrayList<TextView>()
         val tv_option_one = findViewById<TextView>(R.id.tv_option_one)
         val tv_option_two = findViewById<TextView>(R.id.tv_option_two)
@@ -92,19 +93,22 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         options.add(1, tv_option_two)
         options.add(2, tv_option_three)
         options.add(3, tv_option_four)
-        for (option in options){
+        for (option in options) {
             option.setTextColor(Color.parseColor("#7A8089"))
             option.typeface = Typeface.DEFAULT
             option.background = ContextCompat.getDrawable(this, R.drawable.default_option_border_bg)
         }
     }
 
-    private var mCurrentPosition:Int = 1
+    private var mCurrentPosition: Int = 1
     private var mQuestionsList: ArrayList<Question>? = null
-    private var mSelectedOptionPosition :Int = 0
-    private var mCorrectAnswers:Int = 0
+    private var mSelectedOptionPosition: Int = 0
+    private var mCorrectAnswers: Int = 0
     private var mUserName: String? = null
     private var isAnswerConfirmed = false
+    private var errorCount = 0
+    private val maxErrors = 3
+
 
     override fun onClick(v: View?) {
         val btn_submit = findViewById<Button>(R.id.btn_submit)
@@ -112,7 +116,9 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         val tv_option_two = findViewById<TextView>(R.id.tv_option_two)
         val tv_option_three = findViewById<TextView>(R.id.tv_option_three)
         val tv_option_four = findViewById<TextView>(R.id.tv_option_four)
-
+        val heart1 = findViewById<ImageView>(R.id.heart1)
+        val heart2 = findViewById<ImageView>(R.id.heart2)
+        val heart3 = findViewById<ImageView>(R.id.heart3)
         when (v?.id) {
             R.id.tv_option_one -> {
                 if (!isAnswerConfirmed) {
@@ -120,24 +126,28 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
                 }
             }
+
             R.id.tv_option_two -> {
                 if (!isAnswerConfirmed) {
                     selectedOptionView(tv_option_two, 2)
 
                 }
             }
+
             R.id.tv_option_three -> {
                 if (!isAnswerConfirmed) {
                     selectedOptionView(tv_option_three, 3)
 
                 }
             }
+
             R.id.tv_option_four -> {
                 if (!isAnswerConfirmed) {
                     selectedOptionView(tv_option_four, 4)
 
                 }
             }
+
             R.id.btn_submit -> {
                 if (mSelectedOptionPosition == 0) {
 
@@ -145,19 +155,38 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 if (!isAnswerConfirmed) {
-
                     val question = mQuestionsList?.get(mCurrentPosition - 1)
 
                     if (question!!.correctAnswer != mSelectedOptionPosition) {
+                        errorCount++
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+
+
+                        when (errorCount) {
+                            1 -> heart3.visibility = View.INVISIBLE
+                            2 -> heart2.visibility = View.INVISIBLE
+                            3 -> heart1.visibility = View.INVISIBLE
+                        }
+
+
+                        if (errorCount >= maxErrors) {
+                            val intent = Intent(this, ResultActivity::class.java)
+                            intent.putExtra(Constants.USER_NAME, mUserName)
+                            intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                            intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList!!.size)
+                            startActivity(intent)
+                            finish()
+                            return
+                        }
+
+
                     } else {
                         mCorrectAnswers++
                     }
+
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
 
-
                     isAnswerConfirmed = true
-
 
                     if (mCurrentPosition == mQuestionsList!!.size) {
                         btn_submit.text = "Завершить"
@@ -165,7 +194,6 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         btn_submit.text = "Следующий вопрос"
                     }
                 } else {
-
                     mCurrentPosition++
 
                     if (mCurrentPosition <= mQuestionsList!!.size) {
@@ -174,7 +202,6 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         isAnswerConfirmed = false
                         mSelectedOptionPosition = 0
                     } else {
-
                         val intent = Intent(this, ResultActivity::class.java)
                         intent.putExtra(Constants.USER_NAME, mUserName)
                         intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
@@ -223,6 +250,12 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         textView.setTypeface(textView.typeface, Typeface.BOLD)
         textView.background = ContextCompat.getDrawable(this, R.drawable.selected_option_border_bg)
 
+    }
+
+    fun btn_back(view: View) {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }

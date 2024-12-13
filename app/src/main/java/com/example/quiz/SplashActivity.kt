@@ -16,7 +16,7 @@ class SplashActivity : AppCompatActivity() {
 
 
         Handler().postDelayed({
-в
+
 
 
 

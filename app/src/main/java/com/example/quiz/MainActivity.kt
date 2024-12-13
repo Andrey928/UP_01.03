@@ -28,12 +28,15 @@ class MainActivity : AppCompatActivity() {
 
     fun btn_click(view: View) {
         val textbox = findViewById<EditText>(R.id.et_name)
-        if (textbox.text.toString().isEmpty()){
+        val name = textbox.text.toString().trim()
+        val maxLength = 16
+        if (name.isEmpty()) {
             Toast.makeText(this, "Пожалуйста, введите свое имя", Toast.LENGTH_SHORT).show()
-
-        }else{
+        } else if (name.length > maxLength) {
+            Toast.makeText(this, "Имя должно содержать не более $maxLength символов", Toast.LENGTH_SHORT).show()
+        } else {
             val intent = Intent(this, QuizQuestionsActivity::class.java)
-            intent.putExtra(Constants.USER_NAME,textbox.text.toString())
+            intent.putExtra(Constants.USER_NAME, name)
             startActivity(intent)
             finish()
         }

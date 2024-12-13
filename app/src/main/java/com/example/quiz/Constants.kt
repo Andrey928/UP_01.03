@@ -153,6 +153,128 @@ object Constants {
 
         questionsList.add(que15)
 
+        val que16 = Question(
+            16, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_burkina_faso,
+            "Сальвадор", "Саудовская Аравия",
+            "Лихтенштейн", "Буркина-Фасо", 4
+        )
+
+        questionsList.add(que16)
+
+        val que17 = Question(
+            17, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_burundi,
+            "Науру", "Сингапур",
+            "Бурунди", "Мадагаскар", 3
+        )
+
+        questionsList.add(que17)
+
+        val que18 = Question(
+            18, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_south_korea,
+            "Республика Корея", "КНДР",
+            "Чехия", "Канада", 1
+        )
+        questionsList.add(que18)
+
+        val que19 = Question(
+            19, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_the_british_virgin_islands,
+            "Восточный Тимор", "Босния и Герцеговина",
+            "Фарерские острова", "Британские Виргинские о-ва", 4
+        )
+        questionsList.add(que19)
+
+        val que20 = Question(
+            20, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_tunisia,
+            "Алжир", "Норвегия",
+            "Египет", "Тунис", 4
+        )
+        questionsList.add(que20)
+
+        val que21 = Question(
+            21, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_costa_rica,
+            "Финляндия", "Коста-Рика",
+            "Бангладеш", "Замбия", 2
+        )
+        questionsList.add(que21)
+
+        val que22 = Question(
+            22, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_ruanda,
+            "Испания", "Шотландия",
+            "Руанда", "Нидерланды", 3
+        )
+        questionsList.add(que22)
+
+        val que23 = Question(
+            23, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_tanzania,
+            "Танзания", "Черногория",
+            "Барбадос", "Япония", 1
+        )
+        questionsList.add(que23)
+
+        val que24 = Question(
+            24, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_bolivia,
+            "Либерия", "Хорватия",
+            "Боливия", "Пакистан", 3
+        )
+        questionsList.add(que24)
+
+        val que25 = Question(
+            25, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_scotland,
+            "Франция", "Австрия",
+            "Швеция", "Шотландия", 4
+        )
+        questionsList.add(que25)
+
+        val que26 = Question(
+            26, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_haiti,
+            "Сьерра-Леоне", "Гаити",
+            "Бангладеш", "Ни один из них", 2
+        )
+        questionsList.add(que26)
+
+        val que27 = Question(
+            27, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_latvia,
+            "Латвия", "Албания",
+            "Андорра", "Ватикан", 1
+        )
+        questionsList.add(que27)
+
+        val que28 = Question(
+            28, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_monaco,
+            "Польша", "Монако",
+            "ОАЭ", "Азербайджан", 2
+        )
+        questionsList.add(que28)
+
+        val que29 = Question(
+            29, "Какой стране принадлежит этот флаг?",
+            R.drawable.flag_of_switzerland,
+            "Малайзия", "Швеция",
+            "Боливия", "Швейцария", 4
+        )
+        questionsList.add(que29)
+
+        val que30 = Question(
+            30, "Какой стране принадлежит этот флаг?",
+            R.drawable.gabon,
+            "Ямайка", "ЮАР",
+            "Уругвай", "Ни один из них", 4
+        )
+        questionsList.add(que30)
+
         return questionsList.shuffled() as ArrayList<Question>
     }
 }
